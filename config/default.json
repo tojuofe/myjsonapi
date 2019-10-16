@@ -1,0 +1,6 @@
+{
+  "mongoURI": "mongodb://localhost/developerNetwork",
+  "jwtSecret": "secret",
+  "githubClientId": "a64571b664a69540b5e0",
+  "githubSecret": "959951d4c7c7e9664412e5e6aa7ecdca8d51be68"
+}
