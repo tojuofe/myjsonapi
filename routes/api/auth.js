@@ -45,7 +45,7 @@ router.post(
       if (!user) {
         return res
           .status(400)
-          .json({ errors: [{ msg: 'invalid Credentials' }] });
+          .json({ errors: [{ msg: 'Invalid Credentials' }] });
       }
 
       // Match password
