@@ -1,8 +1,15 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { getCurrentProfile } from '../../action/profile';
 
-const Dashboard = ({ auth: { user } }) => {
+const Dashboard = ({ auth: { user }, getCurrentProfile, profile }) => {
+  useEffect(() => {
+    getCurrentProfile();
+    //eslint-disable-next-line
+  }, []);
+
   return (
     <Fragment>
       <h1 className="large text-primary">Dashboard</h1>
@@ -91,8 +98,18 @@ const Dashboard = ({ auth: { user } }) => {
   );
 };
 
+Dashboard.propTypes = {
+  auth: PropTypes.object.isRequired,
+  getCurrentProfile: PropTypes.func.isRequired,
+  profile: PropTypes.object.isRequired
+};
+
 const mapStateToProps = state => ({
-  auth: state.auth
+  auth: state.auth,
+  profile: state.profile
 });
 
-export default connect(mapStateToProps)(Dashboard);
+export default connect(
+  mapStateToProps,
+  { getCurrentProfile }
+)(Dashboard);
